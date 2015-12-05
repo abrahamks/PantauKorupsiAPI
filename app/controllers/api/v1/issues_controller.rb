@@ -3,8 +3,11 @@ class Api::V1::IssuesController < Api::V1::BaseController
   before_action :authenticate_moderator!, only: :verify
   before_action :set_issue, only: [:show, :update]
   respond_to :json
+
   def index
-    paginate json: Issues.all
+    q = Issue.ransack(params[:q])
+    issues = q.result(distinct: true).page(params[:page]).per(params[:per_page])
+    paginate json: issues
   end
 
   def show
