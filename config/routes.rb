@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  api_version(:module => "Api::V1", :path => {:value => "v1"}, :default => true) do
-    resources :issues
+  api_version(:module => "Api::V1", :path => {:value => "v1"}, :default => true, :defaults => {:format => :json}) do
     resources :organizations
     resources :actors
     resources :sessions, only: [:create, :destroy]
