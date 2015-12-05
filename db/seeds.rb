@@ -24,3 +24,19 @@ Status.create(name:'Prapenuntutan dan penuntutan')
 Status.create(name:'Prapenuntutan dan penuntutan')
 Status.create(name:'Praperadilan')
 Status.create(name:'Sidang pengadilan')
+Status.create(name:'Selesai')
+
+100.times do
+  Issue.create!(
+    title:  FFaker::Name.name,
+    description: FFaker::Company.bs,
+    started_at: Time.now,
+    finished_at: Time.now,
+    financial_cost: 80000000,
+    procurement_url: nil,
+    user_id: 1,
+    verifier_id: 1,
+    verified_at: Time.now,
+    status_id: 1
+  )
+end
