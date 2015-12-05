@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :actors
     resources :sessions, only: [:create, :destroy]
     resources :users, only: [:show, :create]
+    resources :issues
     resources :feeds do
       get 'verify', to: :verify
     end
