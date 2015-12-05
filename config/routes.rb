@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   api_version(:module => "Api::V1", :path => {:value => "v1"}, :default => true) do
     resources :organizations
     resources :actors
-    resources :sessions
-    resources :users
+    resources :sessions, only: [:create, :destroy]
+    resources :users, only: [:show, :create]
+    resources :feeds do
+      get 'verify', to: :verify
+    end
   end
 end
