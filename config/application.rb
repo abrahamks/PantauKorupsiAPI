@@ -23,9 +23,11 @@ module PantauKorupsi
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => %w{GET POST DELETE PATCH PUT OPTIONS}.join(",")
-    }
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :delete, :put, :patch, :options, :head]
+      end
+    end
   end
 end
