@@ -1,3 +1,3 @@
 object @issues
 
-extends('api/v1/issues/_object')
+extends('api/v1/issues/_flatten_object')

@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create!(email: 'test@example.com', name:'test_user', password: '12345678', password_confirmation: '12345678')
+User.create!(email: 'admin@example.com', name:'test_user', password: '12345678', password_confirmation: '12345678', moderator: true)
 # Issue.create!(title: 'Papa minta saham', description: 'Ketua DPR meminta saham kepada bos freeport', occured_at: '2015-12-01')
 
 TOTAL_SEEDED_ACTORS = 100
@@ -55,15 +56,16 @@ TOTAL_SEEDED_ISSUES.times do
     )
   end
 
-  rand(1.20).times do
+  rand(1..20).times do
     Feed.create!(
-      title: Faker::Lorem.sentence,
-      summary: Faker::Lorem.paragraph,
-      url: Faker::Internet.domain_name,
+      title: FFaker::Lorem.sentence,
+      summary: FFaker::Lorem.paragraph,
+      url: FFaker::Internet.domain_name,
       user_id: 1,
       issue_id: issue.id,
       verifier_id: 1,
-      verified_at: Time.now
+      verified_at: Time.now,
+      occured_at: Time.now
     )
   end
 end

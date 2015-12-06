@@ -20,7 +20,7 @@ Rabl.configure do |config|
   # config.xml_options = { :dasherize  => true, :skip_types => false }
   # config.view_paths = []
   # config.raise_on_missing_attribute = true # Defaults to false
-  config.replace_nil_values_with_empty_strings = true # Defaults to false
+  # config.replace_nil_values_with_empty_strings = true # Defaults to false
   # config.replace_empty_string_values_with_nil_values = true # Defaults to false
   # config.exclude_nil_values = true # Defaults to false
   # config.exclude_empty_values_in_collections = true # Defaults to false

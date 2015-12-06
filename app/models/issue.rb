@@ -4,4 +4,6 @@ class Issue < ActiveRecord::Base
   has_many :feeds
   has_many :involvements
   has_many :actors, through: :involvements
+  belongs_to :user
+  belongs_to :verifier, :class_name => "User"
 end
