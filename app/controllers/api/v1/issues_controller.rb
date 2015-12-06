@@ -47,7 +47,7 @@ class Api::V1::IssuesController < Api::V1::BaseController
     @issue.update(verifier_id: current_user.id)
     @issue.update(verified_at: Time.now)
     if @issue.save
-      render json: @issue, status: 201
+      respond_with @issue
     else
       render json: { errors: @issue.errors }, status: 422
     end
