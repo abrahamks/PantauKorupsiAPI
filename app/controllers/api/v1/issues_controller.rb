@@ -26,7 +26,6 @@ class Api::V1::IssuesController < Api::V1::BaseController
 
   private
     def set_issue
-      ap params[:id]
       @issue = Issue.find(params[:id])
     end
     def issue_params
