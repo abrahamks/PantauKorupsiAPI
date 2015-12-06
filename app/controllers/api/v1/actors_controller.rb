@@ -15,7 +15,6 @@ class Api::V1::ActorsController < Api::V1::BaseController
   end
 
   def show
-    render json: @actor
   end
 
   def create
