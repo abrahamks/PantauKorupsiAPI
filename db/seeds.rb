@@ -32,33 +32,6 @@ o_fp = Organization.create!(
   description: "Perusahaan tambang emas"
 )
 
-
-Issue.create!(
-  title: "Aulia Pohan Tersangka Kasus Dana BI",
-  description: FFaker::Lorem.paragraph,
-  started_at: Time.new(2008, 9, 3),
-  finished_at: nil,
-  financial_cost: 100_000_000_000,
-  procurement_url: nil,
-  user_id: 1,
-  verifier_id: 1,
-  verified_at: Time.now,
-  status_id: 6
-)
-
-Issue.create!(
-  title: "Kasus Dana Haji Kementerian Agama",
-  description: FFaker::Lorem.paragraph,
-  started_at: Time.new(2008, 9, 3),
-  finished_at: nil,
-  financial_cost: 100_000_000_000,
-  procurement_url: nil,
-  user_id: 1,
-  verifier_id: 1,
-  verified_at: Time.now,
-  status_id: 4
-)
-
 i_saham = Issue.create!(
   title: "Percobaan Korupsi Setya Novanto",
   description: "Pencatutan nama Presiden dan Wakil Presiden Republik Indonesia untuk meminta saham di PT Freeport.",
@@ -321,6 +294,31 @@ Organization.create!(
   description: "Bank sentral pengatur peredaran mata uang di Indonesia"
 )
 
+Issue.create!(
+  title: "Aulia Pohan Tersangka Kasus Dana BI",
+  description: FFaker::Lorem.paragraph,
+  started_at: Time.new(2008, 9, 3),
+  finished_at: nil,
+  financial_cost: 100_000_000_000,
+  procurement_url: nil,
+  user_id: 1,
+  verifier_id: 1,
+  verified_at: Time.now,
+  status_id: 6
+)
+
+Issue.create!(
+  title: "Kasus Dana Haji Kementerian Agama",
+  description: FFaker::Lorem.paragraph,
+  started_at: Time.new(2008, 9, 3),
+  finished_at: nil,
+  financial_cost: 100_000_000_000,
+  procurement_url: nil,
+  user_id: 1,
+  verifier_id: 1,
+  verified_at: Time.now,
+  status_id: 4
+)
 
 
 
