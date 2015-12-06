@@ -111,6 +111,8 @@ GEM
     polyamorous (1.2.0)
       activerecord (>= 3.0)
     puma (2.14.0)
+    rabl (0.11.6)
+      activesupport (>= 2.3.14)
     rack (1.6.4)
     rack-cors (0.4.0)
     rack-test (0.6.3)
@@ -214,6 +216,7 @@ DEPENDENCIES
   kaminari
   pg
   puma
+  rabl
   rack-cors
   rails (= 4.2.4)
   ransack

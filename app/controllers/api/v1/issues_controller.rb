@@ -4,11 +4,10 @@ class Api::V1::IssuesController < Api::V1::BaseController
   before_action :set_issue, only: [:show, :update]
   respond_to :json
   def index
-    paginate json: Issues.all
+    @issues = paginate Issue.all
   end
 
   def show
-    render json: @issue
   end
 
   def create
@@ -24,7 +23,7 @@ class Api::V1::IssuesController < Api::V1::BaseController
   private
     def set_issue
       ap params[:id]
-      @issue = Issue.find(params[:id])
+      @issue = Issue.includes(:status).find(params[:id])
     end
     def issue_params
       params.permit(:title, :description, :started_at, :status_id)

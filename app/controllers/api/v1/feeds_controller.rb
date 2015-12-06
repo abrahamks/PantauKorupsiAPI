@@ -4,7 +4,7 @@ class Api::V1::FeedsController < Api::V1::BaseController
   before_action :set_feed, only: [:show, :update]
   respond_to :json
   def index
-    paginate json: Feed.all
+    paginate json: Feed.where(issue_id: params[:issue_id])
   end
 
   def show
@@ -42,6 +42,6 @@ class Api::V1::FeedsController < Api::V1::BaseController
       @feed = Feed.find(params[:id])
     end
     def feed_params
-      params.permit(:title, :summary, :url, :occured_at)
+      params.permit(:title, :summary, :url, :occured_at, :issue_id)
     end
 end
