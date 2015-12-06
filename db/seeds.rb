@@ -289,8 +289,18 @@ i_saham = Issue.create!(
   status_id: 2
 )
 
-i_saham.actors << a_setya
-i_saham.actors << a_reza
+Involvement.create!(
+  issue_id: i_saham.id, 
+  actor_id: i_saham.id, 
+  actor_status_id: 4
+)
+
+Involvement.create!(
+  issue_id: i_atut_lebak.id, 
+  actor_id: a_reza.id, 
+  actor_status_id: 4
+)
+
 i_saham.organizations << o_dpr
 i_saham.organizations << o_fp
 
