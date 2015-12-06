@@ -5,7 +5,7 @@ attributes :id, :name, :description, :image_url
 child :involvements, object_root: false do
 	attributes :id, :actor_status
 	child :issue do
-		attributes :id, :title, :description, :status
+		extends('api/v1/issues/_flatten_object')
 	end
 	child :actor_status do
 		attributes :id, :name
