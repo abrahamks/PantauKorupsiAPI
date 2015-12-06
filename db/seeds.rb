@@ -198,9 +198,9 @@ a_setya = Actor.create!(
 )
 
 a_reza = Actor.create!(
-  name: "Setya Novanto", 
+  name: "Reza Chalid", 
   profile_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg", 
-  image_url: "http://assets-a2.kompasiana.com/items/album/2015/11/17/catut-nama-564acd0a519373ed078d3cad.jpg?t=o&v=760", 
+  image_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg",
   description: "Pengusaha"
 )
 
@@ -284,7 +284,7 @@ i_saham = Issue.create!(
   financial_cost: 0,
   procurement_url: nil,
   user_id: 1,
-  status_id: 2
+  status_id: 1
 )
 
 Involvement.create!(
@@ -302,14 +302,24 @@ Involvement.create!(
 i_saham.organizations << o_dpr
 i_saham.organizations << o_fp
 
+Feed.create!(
+  title: "Sidang terbuka Mahkamah Kehormatan Dewan (MKD)",
+  summary: FFaker::Lorem.paragraph,
+  url: "http://kompas.com",
+  user_id: 1,
+  issue_id: i_saham.id,
+  verifier_id: 1,
+  verified_at: Time.now,
+  occured_at: Time.new(2014, 5, 8)
+)
 
 
 
 
 
-TOTAL_SEEDED_ACTORS = 50
-TOTAL_SEEDED_ORGANIZATIONS = 50
-TOTAL_SEEDED_ISSUES = 50
+TOTAL_SEEDED_ACTORS = 20
+TOTAL_SEEDED_ORGANIZATIONS = 20
+TOTAL_SEEDED_ISSUES = 20
 
 TOTAL_SEEDED_ACTORS.times do
   Actor.create!(
@@ -329,6 +339,14 @@ TOTAL_SEEDED_ORGANIZATIONS.times do
 end
 
 TOTAL_SEEDED_ISSUES.times do
+  if rand(0..1) == 0
+    verifier_id = 1
+    verified_at = Time.now
+  else
+    verifier_id = nil
+    verified_at = nil
+  end
+
   issue = Issue.create!(
     title: FFaker::Lorem.sentence,
     description: FFaker::Lorem.paragraph,
@@ -337,8 +355,8 @@ TOTAL_SEEDED_ISSUES.times do
     financial_cost: rand(1..2000) * 1000000000,
     procurement_url: nil,
     user_id: 1,
-    verifier_id: 1,
-    verified_at: Time.now,
+    verifier_id: verifier_id,
+    verified_at: verified_at,
     status_id: rand(1..6)
   )
 
@@ -355,6 +373,14 @@ TOTAL_SEEDED_ISSUES.times do
   end
 
   rand(1..20).times do
+    if rand(0..1) == 0
+      verifier_id = 1
+      verified_at = Time.now
+    else
+      verifier_id = nil
+      verified_at = nil
+    end
+
     Feed.create!(
       title: FFaker::Lorem.sentence,
       summary: FFaker::Lorem.paragraph,
