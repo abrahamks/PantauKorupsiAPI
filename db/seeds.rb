@@ -74,7 +74,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2001, 12, 03)
@@ -85,7 +85,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2011, 4, 20)
@@ -96,7 +96,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2012, 1, 2)
@@ -107,7 +107,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2012, 2, 2)
@@ -118,7 +118,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2012, 2, 2)
@@ -129,7 +129,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2012, 4, 20)
@@ -140,7 +140,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2012, 10, 3)
@@ -151,7 +151,7 @@ Feed.create!(
   summary: FFaker::Lorem.paragraph,
   url: "http://kompas.com",
   user_id: 1,
-  issue_id: issue.id,
+  issue_id: i_atut_lebak.id,
   verifier_id: 1,
   verified_at: Time.now,
   occured_at: Time.new(2014, 5, 8)
@@ -281,12 +281,12 @@ i_saham = Issue.create!(
   description: "Pencatutan nama Presiden dan Wakil Presiden Republik Indonesia untuk meminta saham di PT Freeport.",
   started_at: Time.new(2008, 9, 3),
   finished_at: nil,
-  financial_cost: 100_000_000_000,
+  financial_cost: 0,
   procurement_url: nil,
   user_id: 1,
   verifier_id: 1,
   verified_at: Time.now,
-  status_id: 4
+  status_id: 2
 )
 
 i_saham.actors << a_setya
