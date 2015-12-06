@@ -291,12 +291,12 @@ i_saham = Issue.create!(
 
 Involvement.create!(
   issue_id: i_saham.id, 
-  actor_id: i_saham.id, 
+  actor_id: a_setya.id, 
   actor_status_id: 4
 )
 
 Involvement.create!(
-  issue_id: i_atut_lebak.id, 
+  issue_id: i_saham.id, 
   actor_id: a_reza.id, 
   actor_status_id: 4
 )
