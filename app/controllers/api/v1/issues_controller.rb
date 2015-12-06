@@ -44,6 +44,7 @@ class Api::V1::IssuesController < Api::V1::BaseController
   end
 
   def verify
+    @issue = Issue.find(params[:issue_id])
     @issue.update(verifier_id: current_user.id)
     @issue.update(verified_at: Time.now)
     if @issue.save
