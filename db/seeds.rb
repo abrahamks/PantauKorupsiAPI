@@ -2,6 +2,106 @@ User.create!(email: 'moderator@example.com', name:'Moderator', password: '123456
 User.create!(email: 'admin@example.com', name:'Administrator', password: '12345678', password_confirmation: '12345678', moderator: true)
 User.create!(email: 'test@example.com', name:'Fatima', password: '12345678', password_confirmation: '12345678', moderator: false)
 
+
+
+
+
+a_setya = Actor.create!(
+  name: "Setya Novanto", 
+  profile_url: "https://id.wikipedia.org/wiki/Akil_Mochtar", 
+  image_url: "http://assets-a2.kompasiana.com/items/album/2015/11/17/catut-nama-564acd0a519373ed078d3cad.jpg?t=o&v=760", 
+  description: "Ketua Dewan Perwakilan Rakyat Republik Indonesia"
+)
+
+a_reza = Actor.create!(
+  name: "Reza Chalid", 
+  profile_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg", 
+  image_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg",
+  description: "Pengusaha"
+)
+
+o_dpr = Organization.create!(
+  name: "DPR RI", 
+  organization_url: "http://bantenprov.go.id/", 
+  description: "Dewan Perwakilan Rakyat Republik Indonesia"
+)
+
+o_fp = Organization.create!(
+  name: "PT Freeport Indonesia", 
+  organization_url: "http://bantenprov.go.id/", 
+  description: "Perusahaan tambang emas"
+)
+
+
+Issue.create!(
+  title: "Aulia Pohan Tersangka Kasus Dana BI",
+  description: FFaker::Lorem.paragraph,
+  started_at: Time.new(2008, 9, 3),
+  finished_at: nil,
+  financial_cost: 100_000_000_000,
+  procurement_url: nil,
+  user_id: 1,
+  verifier_id: 1,
+  verified_at: Time.now,
+  status_id: 6
+)
+
+Issue.create!(
+  title: "Kasus Dana Haji Kementerian Agama",
+  description: FFaker::Lorem.paragraph,
+  started_at: Time.new(2008, 9, 3),
+  finished_at: nil,
+  financial_cost: 100_000_000_000,
+  procurement_url: nil,
+  user_id: 1,
+  verifier_id: 1,
+  verified_at: Time.now,
+  status_id: 4
+)
+
+i_saham = Issue.create!(
+  title: "Percobaan Korupsi Setya Novanto",
+  description: "Pencatutan nama Presiden dan Wakil Presiden Republik Indonesia untuk meminta saham di PT Freeport.",
+  started_at: Time.new(2015, 11, 3),
+  finished_at: nil,
+  financial_cost: 0,
+  procurement_url: nil,
+  user_id: 1,
+  status_id: 1
+)
+
+Involvement.create!(
+  issue_id: i_saham.id, 
+  actor_id: a_setya.id, 
+  actor_status_id: 4
+)
+
+Involvement.create!(
+  issue_id: i_saham.id, 
+  actor_id: a_reza.id, 
+  actor_status_id: 4
+)
+
+i_saham.organizations << o_dpr
+i_saham.organizations << o_fp
+
+Feed.create!(
+  title: "Sidang terbuka Mahkamah Kehormatan Dewan (MKD)",
+  summary: FFaker::Lorem.paragraph,
+  url: "http://kompas.com",
+  user_id: 1,
+  issue_id: i_saham.id,
+  verifier_id: 1,
+  verified_at: Time.now,
+  occured_at: Time.new(2015, 12, 2)
+)
+
+
+
+
+
+
+
 a_atut = Actor.create!(
   name: "Ratu Atut Chosiyah", 
   profile_url: "https://id.wikipedia.org/wiki/Ratu_Atut_Chosiyah", 
@@ -190,22 +290,6 @@ Actor.create!(
   description: "Deputi senior gubernur Bank Indonesia dan guru besar Fakultas Ekonomi Universitas Indonesia. Sebelumnya dia menjabat sebagai deputi gubernur BI."
 )
 
-a_setya = Actor.create!(
-  name: "Setya Novanto", 
-  profile_url: "https://id.wikipedia.org/wiki/Akil_Mochtar", 
-  image_url: "http://assets-a2.kompasiana.com/items/album/2015/11/17/catut-nama-564acd0a519373ed078d3cad.jpg?t=o&v=760", 
-  description: "Ketua Dewan Perwakilan Rakyat Republik Indonesia"
-)
-
-a_reza = Actor.create!(
-  name: "Reza Chalid", 
-  profile_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg", 
-  image_url: "http://cdn.klimg.com/merdeka.com/i/w/news/2015/12/04/632755/670x335/mkd-agendakan-periksa-riza-chalid-selasa-atau-rabu-pekan-depan.jpg",
-  description: "Pengusaha"
-)
-
-
-
 
 Organization.create!(
   name: "Polri", 
@@ -236,83 +320,6 @@ Organization.create!(
   organization_url: "http://bantenprov.go.id/", 
   description: "Bank sentral pengatur peredaran mata uang di Indonesia"
 )
-
-o_dpr = Organization.create!(
-  name: "DPR RI", 
-  organization_url: "http://bantenprov.go.id/", 
-  description: "Dewan Perwakilan Rakyat Republik Indonesia"
-)
-
-o_fp = Organization.create!(
-  name: "PT Freeport Indonesia", 
-  organization_url: "http://bantenprov.go.id/", 
-  description: "Perusahaan tambang emas"
-)
-
-
-Issue.create!(
-  title: "Aulia Pohan Tersangka Kasus Dana BI",
-  description: FFaker::Lorem.paragraph,
-  started_at: Time.new(2008, 9, 3),
-  finished_at: nil,
-  financial_cost: 100_000_000_000,
-  procurement_url: nil,
-  user_id: 1,
-  verifier_id: 1,
-  verified_at: Time.now,
-  status_id: 6
-)
-
-Issue.create!(
-  title: "Kasus Dana Haji Kementerian Agama",
-  description: FFaker::Lorem.paragraph,
-  started_at: Time.new(2008, 9, 3),
-  finished_at: nil,
-  financial_cost: 100_000_000_000,
-  procurement_url: nil,
-  user_id: 1,
-  verifier_id: 1,
-  verified_at: Time.now,
-  status_id: 4
-)
-
-i_saham = Issue.create!(
-  title: "Percobaan Korupsi Setya Novanto",
-  description: "Pencatutan nama Presiden dan Wakil Presiden Republik Indonesia untuk meminta saham di PT Freeport.",
-  started_at: Time.new(2015, 11, 3),
-  finished_at: nil,
-  financial_cost: 0,
-  procurement_url: nil,
-  user_id: 1,
-  status_id: 1
-)
-
-Involvement.create!(
-  issue_id: i_saham.id, 
-  actor_id: a_setya.id, 
-  actor_status_id: 4
-)
-
-Involvement.create!(
-  issue_id: i_saham.id, 
-  actor_id: a_reza.id, 
-  actor_status_id: 4
-)
-
-i_saham.organizations << o_dpr
-i_saham.organizations << o_fp
-
-Feed.create!(
-  title: "Sidang terbuka Mahkamah Kehormatan Dewan (MKD)",
-  summary: FFaker::Lorem.paragraph,
-  url: "http://kompas.com",
-  user_id: 1,
-  issue_id: i_saham.id,
-  verifier_id: 1,
-  verified_at: Time.now,
-  occured_at: Time.new(2014, 5, 8)
-)
-
 
 
 
