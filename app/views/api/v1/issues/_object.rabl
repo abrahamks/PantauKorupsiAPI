@@ -5,7 +5,7 @@ child ({:verifier => :verifier}) do
 end
 
 child :organizations, object_root: false do
-	attributes :id, :name
+	attributes :id, :name, :description
 end
 
 child :involvements, object_root: false do

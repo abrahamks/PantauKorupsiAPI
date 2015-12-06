@@ -5,8 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(email: 'test@example.com', name:'test_user', password: '12345678', password_confirmation: '12345678')
-User.create!(email: 'admin@example.com', name:'test_user', password: '12345678', password_confirmation: '12345678', moderator: true)
+User.create!(email: 'moderator@example.com', name:'Moderator', password: '12345678', password_confirmation: '12345678', moderator: true)
+User.create!(email: 'admin@example.com', name:'Administrator', password: '12345678', password_confirmation: '12345678', moderator: true)
+User.create!(email: 'test@example.com', name:'Fatima', password: '12345678', password_confirmation: '12345678', moderator: false)
 # Issue.create!(title: 'Papa minta saham', description: 'Ketua DPR meminta saham kepada bos freeport', occured_at: '2015-12-01')
 
 TOTAL_SEEDED_ACTORS = 100
