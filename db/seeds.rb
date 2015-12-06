@@ -279,13 +279,11 @@ Issue.create!(
 i_saham = Issue.create!(
   title: "Percobaan Korupsi Setya Novanto",
   description: "Pencatutan nama Presiden dan Wakil Presiden Republik Indonesia untuk meminta saham di PT Freeport.",
-  started_at: Time.new(2008, 9, 3),
+  started_at: Time.new(2015, 11, 3),
   finished_at: nil,
   financial_cost: 0,
   procurement_url: nil,
   user_id: 1,
-  verifier_id: 1,
-  verified_at: Time.now,
   status_id: 2
 )
 
