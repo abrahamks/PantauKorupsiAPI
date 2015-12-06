@@ -30,7 +30,7 @@ TOTAL_SEEDED_ORGANIZATIONS.times do
 end
 
 TOTAL_SEEDED_ISSUES.times do
-  Issue.create!(
+  issue = Issue.create!(
     title:  FFaker::Name.name,
     description: FFaker::Company.bs,
     started_at: Time.now,
@@ -42,4 +42,28 @@ TOTAL_SEEDED_ISSUES.times do
     verified_at: Time.now,
     status_id: rand(1..12)
   )
+
+  rand(1..4).times do
+    issue.organizations << Organization.find(rand(1..TOTAL_SEEDED_ORGANIZATIONS))
+  end
+
+  rand(1..4).times do
+    Involvement.create!(
+      issue_id: issue.id, 
+      actor_id: rand(1..TOTAL_SEEDED_ACTORS), 
+      actor_status_id: rand(1..4)
+    )
+  end
+
+  rand(1.20).times do
+    Feed.create!(
+      title: Faker::Lorem.sentence,
+      summary: Faker::Lorem.paragraph,
+      url: Faker::Internet.domain_name,
+      user_id: 1,
+      issue_id: issue.id,
+      verifier_id: 1,
+      verified_at: Time.now
+    )
+  end
 end
