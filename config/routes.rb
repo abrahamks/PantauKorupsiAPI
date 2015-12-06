@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :issues, only: [:index, :show, :create] do
       resources :involvements
       resources :feeds do
-        get 'verify', to: :verify
+        get 'verify', action: :verify
       end
     end
   end

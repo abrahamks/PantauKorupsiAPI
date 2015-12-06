@@ -10,7 +10,6 @@ class Api::V1::OrganizationsController < Api::V1::BaseController
   end
 
   def show
-    render json: @organization
   end
 
   def create
