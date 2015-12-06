@@ -1,17 +1,11 @@
 class AddInitialStatuses < ActiveRecord::Migration
   def up
-    Status.create(name:'Laporan/pengaduan/tertangkap tangan')
+    Status.create(name:'Penindakan')
     Status.create(name:'Penyelidikan')
     Status.create(name:'Penyidikan')
-    Status.create(name:'Penangkapan')
-    Status.create(name:'Penahanan')
-    Status.create(name:'Penggeledahan')
-    Status.create(name:'Penyitaan')
-    Status.create(name:'Bantuan hukum')
-    Status.create(name:'Prapenuntutan dan penuntutan')
-    Status.create(name:'Praperadilan')
-    Status.create(name:'Sidang pengadilan')
-    Status.create(name:'Selesai')
+    Status.create(name:'Penuntutan')
+    Status.create(name:'Inkracht')
+    Status.create(name:'Eksekusi')
   end
 
   def down

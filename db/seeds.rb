@@ -41,7 +41,7 @@ TOTAL_SEEDED_ISSUES.times do
     user_id: 1,
     verifier_id: 1,
     verified_at: Time.now,
-    status_id: rand(1..12)
+    status_id: rand(1..6)
   )
 
   rand(1..4).times do
