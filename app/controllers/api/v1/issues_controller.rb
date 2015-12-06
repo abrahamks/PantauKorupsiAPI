@@ -44,11 +44,6 @@ class Api::V1::IssuesController < Api::V1::BaseController
   end
 
   def verify
-    logger.debug params
-    logger.debug "Param issue_id symbol: #{params[:issue_id]}"
-    logger.debug "Param issue_id symbol: #{params['issue_id']}"
-    logger.debug "Param id symbol: #{params[:id]}"
-    logger.debug "Param id symbol: #{params['id']}"
     @issue = Issue.find(params[:issue_id])
     @issue.update(verifier_id: current_user.id)
     @issue.update(verified_at: Time.now)
