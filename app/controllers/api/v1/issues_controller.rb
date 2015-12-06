@@ -47,9 +47,15 @@ class Api::V1::IssuesController < Api::V1::BaseController
     def set_issue
       @issue = Issue.find(params[:id])
     end
-    
+
     def issue_params
-      params.permit(:title, :description, :started_at, :status_id, :financial_cost, actor_attributes: [:id])
+      params.permit(
+        :title, 
+        :description, 
+        :started_at, 
+        :status_id, 
+        :financial_cost, 
+        actor_attributes: [:id])
       #   time_group_attributes: [:start_time, :end_time, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
       #   actor_attributes )
     end  
