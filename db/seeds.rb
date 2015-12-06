@@ -18,7 +18,7 @@ TOTAL_SEEDED_ACTORS.times do
     name: FFaker::Name.name, 
     profile_url: FFaker::Internet.domain_name, 
     image_url: "http://1.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=512", 
-    description: FFaker::Company.bs
+    description: FFaker::Lorem.paragraph
   )
 end
 
@@ -32,8 +32,8 @@ end
 
 TOTAL_SEEDED_ISSUES.times do
   issue = Issue.create!(
-    title:  FFaker::Name.name,
-    description: FFaker::Company.bs,
+    title: FFaker::Lorem.sentence,
+    description: FFaker::Lorem.paragraph,
     started_at: Time.now,
     finished_at: nil,
     financial_cost: rand(1..2000) * 1000000000,
@@ -41,7 +41,7 @@ TOTAL_SEEDED_ISSUES.times do
     user_id: 1,
     verifier_id: 1,
     verified_at: Time.now,
-    status_id: rand(1..12)
+    status_id: rand(1..6)
   )
 
   rand(1..4).times do
