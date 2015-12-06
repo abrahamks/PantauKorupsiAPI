@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205161351) do
+ActiveRecord::Schema.define(version: 20151206042347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actor_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "actors", force: :cascade do |t|
     t.string   "name",        null: false
@@ -22,6 +28,7 @@ ActiveRecord::Schema.define(version: 20151205161351) do
     t.string   "profile_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "image_url"
   end
 
   create_table "actors_organizations", force: :cascade do |t|
@@ -48,6 +55,16 @@ ActiveRecord::Schema.define(version: 20151205161351) do
   add_index "feeds", ["user_id"], name: "index_feeds_on_user_id", using: :btree
   add_index "feeds", ["verifier_id"], name: "index_feeds_on_verifier_id", using: :btree
 
+  create_table "involvements", force: :cascade do |t|
+    t.integer  "issue_id"
+    t.integer  "actor_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "actor_status_id"
+  end
+
+  add_index "involvements", ["actor_status_id"], name: "index_involvements_on_actor_status_id", using: :btree
+
   create_table "issues", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -65,13 +82,6 @@ ActiveRecord::Schema.define(version: 20151205161351) do
 
   add_index "issues", ["user_id"], name: "index_issues_on_user_id", using: :btree
   add_index "issues", ["verifier_id"], name: "index_issues_on_verifier_id", using: :btree
-
-  create_table "issues_actors", force: :cascade do |t|
-    t.integer  "issue_id"
-    t.integer  "actor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "issues_organizations", force: :cascade do |t|
     t.integer  "issue_id"
@@ -118,5 +128,6 @@ ActiveRecord::Schema.define(version: 20151205161351) do
 
   add_foreign_key "feeds", "issues"
   add_foreign_key "feeds", "users"
+  add_foreign_key "involvements", "actor_statuses"
   add_foreign_key "issues", "users"
 end
