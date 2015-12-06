@@ -1,7 +1,7 @@
 class Api::V1::IssuesController < Api::V1::BaseController
   before_action :authenticate_with_token!, only: :create
   before_action :authenticate_moderator!, only: :verify
-  before_action :set_issue, only: [:show, :update]
+  before_action :set_issue, only: [:show, :update, :verify]
   respond_to :json
 
   def index
@@ -40,6 +40,16 @@ class Api::V1::IssuesController < Api::V1::BaseController
         actor_id: actor_id, 
         actor_status_id: 1
       )
+    end
+  end
+
+  def verify
+    @issue.update(verifier_id: current_user.id)
+    @issue.update(verified_at: Time.now)
+    if @issue.save
+      render json: @issue, status: 201
+    else
+      render json: { errors: @issue.errors }, status: 422
     end
   end
 

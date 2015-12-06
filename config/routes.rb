@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :sessions, only: [:create, :destroy]
     resources :users, only: [:show, :create]
     resources :issues, only: [:index, :show, :create] do
+      get 'verify', action: :verify
+
       resources :involvements
       resources :feeds do
         get 'verify', action: :verify
