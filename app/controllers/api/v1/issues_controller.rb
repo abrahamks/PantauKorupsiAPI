@@ -3,8 +3,10 @@ class Api::V1::IssuesController < Api::V1::BaseController
   before_action :authenticate_moderator!, only: :verify
   before_action :set_issue, only: [:show, :update]
   respond_to :json
+
   def index
-    @issues = paginate Issue.all
+    q = Issue.ransack(params[:q])
+    @issues = paginate q.result(distinct: true).page(params[:page]).per(params[:per_page])
   end
 
   def show
@@ -22,8 +24,7 @@ class Api::V1::IssuesController < Api::V1::BaseController
 
   private
     def set_issue
-      ap params[:id]
-      @issue = Issue.includes(:status).find(params[:id])
+      @issue = Issue.find(params[:id])
     end
     def issue_params
       params.permit(:title, :description, :started_at, :status_id)
